@@ -71,9 +71,9 @@
                                                             <CheckBox IsChecked="{Binding IsDone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                                       Padding="4,2"
                                                                       Margin="0,2,6,2"
-                                                                      Background="#0b1220"
-                                                                      Foreground="White"
-                                                                      BorderBrush="#1f2937"
+                                                                      Background="White"
+                                                                      Foreground="#111827"
+                                                                      BorderBrush="#cbd5e1"
                                                                       Focusable="False" />
                                                         </DataTemplate>
                                                     </ItemsControl.ItemTemplate>

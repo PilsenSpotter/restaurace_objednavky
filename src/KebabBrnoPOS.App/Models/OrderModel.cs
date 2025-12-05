@@ -23,6 +23,19 @@ public class OrderModel : INotifyPropertyChanged
 
     public string? Note { get; set; }
 
+    private int _number;
+    public int Number
+    {
+        get => _number;
+        internal set
+        {
+            if (_number == value) return;
+            _number = value;
+            OnPropertyChanged(nameof(Number));
+            OnPropertyChanged(nameof(DisplayCode));
+        }
+    }
+
     private OrderStatus _status;
     public OrderStatus Status
     {
@@ -37,7 +50,7 @@ public class OrderModel : INotifyPropertyChanged
 
     public ObservableCollection<OrderItemModel> Items { get; }
 
-    public string DisplayCode => Id.ToString("N")[..6].ToUpperInvariant();
+    public string DisplayCode => Number > 0 ? Number.ToString("D3") : "???";
     public decimal Total => Items.Sum(i => i.Total);
 
     public event PropertyChangedEventHandler? PropertyChanged;

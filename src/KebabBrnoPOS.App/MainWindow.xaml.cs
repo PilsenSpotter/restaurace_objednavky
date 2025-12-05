@@ -19,6 +19,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
     private OrderModel _aktivniObjednavka;
     private OrderModel? _naposledyOdeslana;
     private KitchenWindow? _kitchenWindow;
+    private PickupWindow? _pickupWindow;
 
     public MainWindow()
     {
@@ -187,6 +188,21 @@ public partial class MainWindow : Window, INotifyPropertyChanged
             Owner = this
         };
         _kitchenWindow.Show();
+    }
+
+    private void OpenPickupDisplay_Click(object sender, RoutedEventArgs e)
+    {
+        if (_pickupWindow is { IsVisible: true })
+        {
+            _pickupWindow.Activate();
+            return;
+        }
+
+        _pickupWindow = new PickupWindow(Store)
+        {
+            Owner = this
+        };
+        _pickupWindow.Show();
     }
 
     private void Restock_Click(object sender, RoutedEventArgs e)

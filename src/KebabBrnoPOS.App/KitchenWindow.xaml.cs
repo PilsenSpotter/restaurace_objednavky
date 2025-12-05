@@ -14,42 +14,30 @@ public partial class KitchenWindow : Window
         InitializeComponent();
         Store = store;
 
-        PendingOrders = new ListCollectionView(Store.Orders);
-        PendingOrders.Filter = o => o is OrderModel order && order.Status != OrderStatus.Hotovo;
-        PendingOrders.SortDescriptions.Add(new SortDescription(nameof(OrderModel.CreatedAt), ListSortDirection.Descending));
-
-        DoneOrders = new ListCollectionView(Store.Orders);
-        DoneOrders.Filter = o => o is OrderModel order && order.Status == OrderStatus.Hotovo;
-        DoneOrders.SortDescriptions.Add(new SortDescription(nameof(OrderModel.CreatedAt), ListSortDirection.Descending));
+        PendingOrders = CreateView(o => o is OrderModel order && (order.Status == OrderStatus.Nova || order.Status == OrderStatus.VyrizujeSe));
 
         DataContext = this;
     }
 
     public PosStore Store { get; }
-    public ICollectionView PendingOrders { get; }
-    public ICollectionView DoneOrders { get; }
+    public ListCollectionView PendingOrders { get; }
 
-    private void MarkDone_Click(object sender, RoutedEventArgs e)
+    private void MarkReady_Click(object sender, RoutedEventArgs e)
     {
         if (sender is Button { Tag: OrderModel order })
         {
-            Store.UpdateStatus(order, OrderStatus.Hotovo);
-            RefreshViews();
+            Store.UpdateStatus(order, OrderStatus.NaVydaj);
+            PendingOrders.Refresh();
         }
     }
 
-    private void Reopen_Click(object sender, RoutedEventArgs e)
+    private ListCollectionView CreateView(Predicate<object> filter)
     {
-        if (sender is Button { Tag: OrderModel order })
-        {
-            Store.UpdateStatus(order, OrderStatus.VyrizujeSe);
-            RefreshViews();
-        }
-    }
-
-    private void RefreshViews()
-    {
-        PendingOrders.Refresh();
-        DoneOrders.Refresh();
+        var view = new ListCollectionView(Store.Orders);
+        view.Filter = filter;
+        view.SortDescriptions.Add(new SortDescription(nameof(OrderModel.CreatedAt), ListSortDirection.Descending));
+        view.LiveFilteringProperties.Add(nameof(OrderModel.Status));
+        view.IsLiveFiltering = true;
+        return view;
     }
 }

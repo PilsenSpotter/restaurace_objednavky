@@ -56,6 +56,14 @@
                             Foreground="White"
                             BorderBrush="#1d4ed8"
                             FontWeight="SemiBold" />
+                    <Button Content="Výdejní displej"
+                            Click="OpenPickupDisplay_Click"
+                            Padding="12,6"
+                            Background="#1f6feb"
+                            Foreground="White"
+                            BorderBrush="#1c4ed8"
+                            FontWeight="SemiBold"
+                            Margin="8,0,0,0" />
                     <Button Content="Doplnit sklad +10"
                             Click="Restock_Click"
                             Padding="12,6"

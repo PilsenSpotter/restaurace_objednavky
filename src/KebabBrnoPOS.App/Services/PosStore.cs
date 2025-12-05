@@ -10,6 +10,7 @@ namespace KebabBrnoPOS.App.Services;
 public class PosStore : INotifyPropertyChanged
 {
     private decimal _denniTrzba;
+    private int _orderCounter;
 
     public PosStore()
     {
@@ -47,6 +48,7 @@ public class PosStore : INotifyPropertyChanged
             return false;
         }
 
+        order.Number = GetNextOrderNumber();
         DeductStock(order);
         order.Status = OrderStatus.VyrizujeSe;
         Orders.Insert(0, order);
@@ -123,5 +125,16 @@ public class PosStore : INotifyPropertyChanged
     private void OnPropertyChanged(string propertyName)
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    private int GetNextOrderNumber()
+    {
+        if (_orderCounter >= 999)
+        {
+            _orderCounter = 0;
+        }
+
+        _orderCounter += 1;
+        return _orderCounter;
     }
 }

@@ -21,3 +21,6 @@ C:\Users\olive\Desktop\restaurace_objednavky\src\KebabBrnoPOS.App\obj\Debug\net8
 C:\Users\olive\Desktop\restaurace_objednavky\src\KebabBrnoPOS.App\obj\Debug\net8.0-windows\KebabBrnoPOS.App.pdb
 C:\Users\olive\Desktop\restaurace_objednavky\src\KebabBrnoPOS.App\obj\Debug\net8.0-windows\KebabBrnoPOS.App.genruntimeconfig.cache
 C:\Users\olive\Desktop\restaurace_objednavky\src\KebabBrnoPOS.App\obj\Debug\net8.0-windows\ref\KebabBrnoPOS.App.dll
+c:\Users\olive\Desktop\restaurace_objednavky\src\KebabBrnoPOS.App\obj\Debug\net8.0-windows\KebabBrnoPOS.App.sourcelink.json
+C:\Users\olive\Desktop\restaurace_objednavky\src\KebabBrnoPOS.App\obj\Debug\net8.0-windows\PickupWindow.g.cs
+C:\Users\olive\Desktop\restaurace_objednavky\src\KebabBrnoPOS.App\obj\Debug\net8.0-windows\PickupWindow.baml

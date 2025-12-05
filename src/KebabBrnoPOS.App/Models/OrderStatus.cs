@@ -4,5 +4,6 @@ public enum OrderStatus
 {
     Nova = 0,
     VyrizujeSe = 1,
-    Hotovo = 2
+    NaVydaj = 2,
+    Vydano = 3
 }
